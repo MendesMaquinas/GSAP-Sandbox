@@ -55,12 +55,28 @@ gsap.to(".btn", {
   onRepeat: () => console.log("Repeat"),
 });
 
-
 //serve para fazer com que uma animaçao atue depois da outra em um mesmo obj
 gsap.to(img1, {
   keyframes: [
-    {duration: 0.3, x: 100},
-    {duration: 0.3, y: 100},
-    {duration: 0.3, y: -100},
-  ]
-})
+    { duration: 0.3, x: 100 },
+    { duration: 0.3, y: 100 },
+    { duration: 0.3, y: -100 },
+  ],
+});
+
+//criacao de animacao customizada
+gsap.registerEffect({
+  name: "imgAnimation",
+  effect: (targets, config) => {
+    return gsap.to(targets, {
+      duration: config.duration,
+      y: 200,
+      scale: 1.4,
+      rotation: 360,
+    });
+  },
+  defaults: {duration: 2}
+});
+
+
+gsap.effects.imgAnimation(img1, {duration: 5})
