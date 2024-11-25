@@ -5,6 +5,8 @@
     ? posicionado
 
     * é possível também atribuir efeitos de css depois das condições
+      gsap.set(img1, {opacity:0})
+
 
     ? propriedade stagger serve para animar elementos filhos qunado mais de um selecionado
 */
@@ -78,5 +80,5 @@ gsap.registerEffect({
   defaults: {duration: 2}
 });
 
-
+ 
 gsap.effects.imgAnimation(img1, {duration: 5})
