@@ -50,4 +50,17 @@ gsap.to(".btn", {
   stagger: 0.2,
   //x: "random(-100,100)",
   x: "random([20,50,-20, -90, 50])",
+  onComplete: () => console.log("COMPLETE"),
+  onStart: () => console.log("Start"),
+  onRepeat: () => console.log("Repeat"),
 });
+
+
+//serve para fazer com que uma animaçao atue depois da outra em um mesmo obj
+gsap.to(img1, {
+  keyframes: [
+    {duration: 0.3, x: 100},
+    {duration: 0.3, y: 100},
+    {duration: 0.3, y: -100},
+  ]
+})
