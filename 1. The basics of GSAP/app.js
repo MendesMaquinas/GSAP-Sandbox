@@ -5,6 +5,8 @@
     ? posicionado
 
     * é possível também atribuir efeitos de css depois das condições
+
+    ? propriedade stagger serve para animar elementos filhos qunado mais de um selecionado
 */
 
 const img1 = document.querySelector(".img1");
@@ -40,3 +42,11 @@ btn.addEventListener("click", () => {
     rotation: 360,
     ease: "elastic.out(1, 0.3)"
 }) */
+
+//animando elementos aleatorios
+
+gsap.to(".btn", {
+  duration: 0.4,
+  stagger: 0.2,
+  x: "random(-100,100)",
+});
