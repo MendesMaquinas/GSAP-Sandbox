@@ -81,4 +81,44 @@ gsap.registerEffect({
 });
 
  
-gsap.effects.imgAnimation(img1, {duration: 5})
+//gsap.effects.imgAnimation(img1, {duration: 5})
+
+const TL = gsap.timeline(
+  {
+    defaults: {
+      duration: 1.5,
+      ease: "power4.out",
+    },
+    /*     
+    repeat: -1, // repete infinitamente
+    yoyo: true, // repete os targets de uma animacao de volta para trás
+     */
+    onComplete: () => {
+
+    }
+  }
+);
+
+TL
+  .from(".img1", {autoAlpha: 0, y: -50, duration: 1})
+  .from(".img2", {autoAlpha: 0, y: -50, duration: 1}, "-=0.75") //ignora as anteriores e iniciara conforme a timeline da timeline
+  .from(".img3", {autoAlpha: 0, y: -50, duration: 2}, "+=0.01") //espera anterior mais segundos informados
+  .from("h1", {autoAlpha: 0, y: -50, duration: 1}, "<") //no mesmo segundo que a anterior a ela, sem delay
+  .add(() => {
+    console.log("aa");
+  })
+  .from("p", {autoAlpha: 0, y: -50, duration: 1, ease: "power4.in"} )
+
+  // normalmente na timeline um elemento isiciará a sua animação depois do outro,
+  // quando adiconamos o "-=0.75", ele diz que iniciará no milissegundo informado referente a timeline total da timeline,
+  // ignorando o elemento anterior
+
+  /* 
+    quando usamos o +=0.75, ele irá seguir a lógica de esperar o elemento anterior, mas adicionará os segundos informados
+  */
+
+    setTimeout(() => {
+      //TL.restart();
+      TL.seek("endAnim");
+      TL.play();
+    }, 7000)
